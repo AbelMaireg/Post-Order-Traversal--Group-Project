@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+#compiler and IDE specific files
+*.sln
+x64
+
 # User-specific files
 *.rsuser
 *.suo
@@ -12,6 +16,8 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
+*.vcxproj
+*.filters
 
 # Mono auto generated files
 mono_crash.*

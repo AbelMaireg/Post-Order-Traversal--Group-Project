@@ -6,17 +6,29 @@ int main()
 
     BTree<char>::Iterator it(btree.root());
 
-    it.setL('b'); it.setR('c');
+    it.setLeft('b'); it.setRight('c');
 
     it.left();
-    it.setL('d'); it.setR('e');
+    it.setLeft('d'); it.setRight('e');
 
     it.parent().right();
-    it.setL('f'); it.setR('g');
+    it.setLeft('f'); it.setRight('g');
 
     it.right();
-    it.setL('h'); it.setR('i');
+    it.setLeft('h'); it.setRight('i');
 
     it.mostParent();
+    
+// Pre-Order Traversal
+    it.print_preOT();
+    write(1, "\n", 1);
+
+// In-Order Traversal    
+    it.print_inOT();
+    write(1, "\n", 1);
+
+// Post-Order Traversal
     it.print_postOT();
+    write(1, "\n", 1);
+
 }
