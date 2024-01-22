@@ -153,7 +153,7 @@ public:
 			return *this;
 		}
 
-		void setL(rref_data_t data) // set new left node
+		void setLeft(rref_data_t data) // set new left node
 		{
 			if (m_ptr->leftChild != nullptr)
 			{
@@ -163,7 +163,7 @@ public:
 			m_ptr->leftChild = node;
 		}
 
-		void setR(rref_data_t data) // set new right node
+		void setRight(rref_data_t data) // set new right node
 		{
 			if (m_ptr->rightChild != nullptr)
 			{
@@ -178,35 +178,38 @@ public:
 			write(1, (m_ptr->m_data), sizeof(data_t));
 		}
 
-		Iterator& postOT() // Post-Order Traversal Incrementally
+		void print_preOT() // Pre-Order Traversal
 		{
-			if (isLeft())
-			{
-				if (hasRightBro())
-				{
-					parent();
-					right();
-					mostLeft();
-				}
+			log();
 
-				else
-				{
-					parent();
-				}
+			if (hasLeft()) {
+				Iterator it1(m_ptr);
+				it1.left();
+				it1.print_preOT();
 			}
 
-			else if (isRight())
-			{
-				parent();
+			if (hasLeft()) {
+				Iterator it1(m_ptr);
+				it1.right();
+				it1.print_preOT();
+			}
+		}
+
+		void print_inOT() // In-Order Traversal
+		{
+			if (hasLeft()) {
+				Iterator it1(m_ptr);
+				it1.left();
+				it1.print_inOT();
 			}
 
-			else if (isRoot())
-			{
-				right();
-				mostLeft();
-			}
+			log();
 
-			return *this;
+			if (hasLeft()) {
+				Iterator it1(m_ptr);
+				it1.right();
+				it1.print_inOT();
+			}
 		}
 
 		void print_postOT() // Post-Order Traversal
